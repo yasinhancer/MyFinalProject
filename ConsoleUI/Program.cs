@@ -8,7 +8,7 @@ namespace ConsoleUI
     //PnP: Plug and Play = yeni herhangi birşey eklemek istediğinde, mevcut kodlarına dookunmayacak, rahatlıkla sistemine entegre edebileceksin. 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             ProductManager productManager = new ProductManager(new InMemoryProductDal());
 
