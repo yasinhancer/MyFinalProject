@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -53,6 +54,11 @@ namespace DataAccess.Concrete.InMemory
             _products.Remove(productToDelete);
             //SingleOrDefault genelde Id sözkonusu olan aramalarda kullanılır, tıpkı üstteki döngümüz gibi listeyi dolaşır.
             //1. yola göre, LINQ Kullanarak tek satırda yazmış olduk. 
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAllByCategory(int categoryId)

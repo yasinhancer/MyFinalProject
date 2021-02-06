@@ -10,15 +10,33 @@ namespace ConsoleUI
     //PnP: Plug and Play = yeni herhangi birşey eklemek istediğinde, mevcut kodlarına dokunmayacak, rahatlıkla sistemine entegre edebileceksin. 
     class Program
     {
-        static void Main(string[] args) 
+        static void Main(string[] args)
+        {
+            ProductTest();
+
+            //CategoryTest();
+
+
+            Console.ReadLine();
+        }
+
+        private static void CategoryTest()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            foreach (var category in categoryManager.GetAll())
+            {
+                Console.WriteLine(category.CategoryName);
+            }
+        }
+
+        private static void ProductTest()
         {
             ProductManager productManager = new ProductManager(new EfProductDal());
 
-            foreach (var product in productManager.GetByUnitPrice(40,100))
+            foreach (var product in productManager.GetProductDetails())
             {
-                Console.WriteLine(product.ProductName); //ürünlerimi sorunsuz bir şekilde listeledim...
+                Console.WriteLine(product.ProductName + "/" + product.CategoryName); //ürünlerimi sorunsuz bir şekilde listeledim...
             }
-            Console.ReadLine();
         }
     }
 }

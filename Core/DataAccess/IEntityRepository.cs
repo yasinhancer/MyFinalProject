@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using Entities.Abstract;
+using Core.Entities;
 
-namespace DataAccess.Abstract
+namespace Core.DataAccess //Core katmanına, başka solutionlarda veya projelerde bu kodları kullanabilmek için,
+                          //yani evrensel olsun diye taşıdım. Core buradaki DataAccess'e bağlı olmasın diye,
+                          //IEntity'i de buraya taşıdım
 {
     //birden çok farklı interface'de bunları kullandığım için, bunları burada bir kez yazıyorum, 
     //tipini de T veriyorum ki burayı implemente ettiğim yerde ben ne tipte istersem o tipte çalışabileyim 
