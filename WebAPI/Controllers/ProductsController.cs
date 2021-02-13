@@ -28,11 +28,8 @@ namespace WebAPI.Controllers
         [HttpGet]
         public List<Product> Get()
         {
-            //DEPENDENCY CHAIN - BAĞIMLILIK ZİNCİRİ 
-            
             var result = _productService.GetAll();
             return result.Data;
-
         }
     }
 }
