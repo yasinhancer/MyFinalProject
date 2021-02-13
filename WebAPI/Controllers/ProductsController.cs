@@ -25,11 +25,42 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
         
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("GetAll")] //en sonda takma isim vermemin sebebi, aynı olanlar ile karışmasın, yoksa karışıyor!!!
+        public IActionResult GetAll()
         {
             var result = _productService.GetAll();
-            return result.Data;
+            if (result.Success) //UNUTMA: success'in default'ı true 
+            {
+                return Ok(result); //Ok: Status 200 ile döner.yanında istenirse, sonuç dönebilir.
+            }
+
+            return BadRequest(result); //BadRequest: Status 400 ile döner.
+        }
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("Add")] //post yazma/ekleme : güncelleme,silme için de kullanılabilir.
+                          //güncelleme için ayrıca HttpPut,
+                          //silme için de ayrıca HttpDelete kullanılabilir,
+                          //ancak hepsi Post üzerinden de yazılabilir 
+        public IActionResult Add(Product product)
+        {
+            var result = _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }
